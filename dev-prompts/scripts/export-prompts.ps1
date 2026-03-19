@@ -100,7 +100,7 @@ try {
     Write-Host "       D:\Dev\configs\copilot-instructions.md"
     Write-Host "       D:\Dev\configs\ai-context.md"
     Write-Host "  3. Execute o setup para registrar as funcoes no perfil:"
-    Write-Host "       .\scripts\setup-dev-prompts.ps1"
+    Write-Host "       .\dev-prompts\scripts\setup-dev-prompts.ps1"
     Write-Host ""
 }
 finally {

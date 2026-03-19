@@ -36,20 +36,41 @@ git clone https://github.com/gpawlakruela-lab/teste.git
 cd teste
 ```
 
-### 2. Execute o setup local
+### 2. Habilite a execução de scripts (primeira vez)
 
 ```powershell
-# [Windows PowerShell] — cria D:\Dev e instala os prompts localmente
+# [Windows PowerShell — executar como Administrador]
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+```
+
+### 3. Execute o setup local
+
+```powershell
+# [Windows PowerShell]
 .\dev-prompts\scripts\setup-dev-prompts.ps1
 ```
 
-### 3. Recarregue o perfil e use
+O script vai:
+- Criar `D:\Dev\` (ou `C:\Dev\` se não houver unidade D)
+- Copiar todos os prompts para `D:\Dev\prompts\` e `D:\Dev\configs\`
+- Perguntar se deseja adicionar as funções (`aidev`, `proj`, etc.) ao seu `$PROFILE`
+
+### 4. Recarregue o perfil e use
 
 ```powershell
-. $PROFILE       # carrega as funções no shell atual
-aidev            # exibe o prompt curto no terminal
+. $PROFILE       # carrega as funções no shell atual (sem reiniciar)
+aidev            # exibe o prompt curto no terminal — pronto para colar no Copilot Chat
 help-dev         # lista todas as funções disponíveis
 ```
+
+### 5. Exporte para outra máquina (opcional)
+
+```powershell
+.\dev-prompts\scripts\export-prompts.ps1
+# gera dist\dev-prompts.zip
+```
+
+Copie o `.zip` na outra máquina, extraia em `D:\Dev\` e repita o passo 3.
 
 ---
 
@@ -69,14 +90,13 @@ help-dev         # lista todas as funções disponíveis
 
 ## Exportar / distribuir os prompts
 
-Para gerar um arquivo `.zip` com todos os prompts e configs prontos para copiar em outro ambiente:
-
 ```powershell
 # [Windows PowerShell]
 .\dev-prompts\scripts\export-prompts.ps1
+# → gera dist\dev-prompts.zip
 ```
 
-Isso cria `dist\dev-prompts.zip` contendo apenas os arquivos de prompt e config, prontos para copiar para `D:\Dev\prompts` e `D:\Dev\configs` em qualquer máquina.
+Extraia o `.zip` em `D:\Dev\` em qualquer máquina e rode `setup-dev-prompts.ps1`.
 
 ---
 
