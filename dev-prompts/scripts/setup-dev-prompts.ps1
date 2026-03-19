@@ -382,7 +382,7 @@ Projeto `$Stack criado em `$(Get-Date -Format 'yyyy-MM-dd').
 - ``tests/`` — testes
 - ``docker/`` — Dockerfiles e compose
 "@ | Set-Content "`$target\README.md" -Encoding UTF8
-    Write-Ok "[mkproj] Projeto criado: `$target"
+    Write-Host "  [OK] Projeto criado: `$target" -ForegroundColor Green
     Set-Location `$target
 }
 
