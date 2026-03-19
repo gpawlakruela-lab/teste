@@ -313,7 +313,7 @@ function aidev {
         Write-Host "[aidev] Conteúdo copiado do arquivo: `$promptFile" -ForegroundColor DarkGray
     } else {
         Write-Warning "Arquivo de prompt nao encontrado: `$promptFile"
-        Write-Warning "Execute: .\scripts\setup-dev-prompts.ps1"
+        Write-Warning "Execute: .\dev-prompts\scripts\setup-dev-prompts.ps1"
     }
 }
 

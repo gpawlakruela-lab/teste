@@ -26,8 +26,9 @@ $ErrorActionPreference = 'Stop'
 # ---------------------------------------------------------------------------
 # Resolve caminhos
 # ---------------------------------------------------------------------------
-$scriptDir = Split-Path $MyInvocation.MyCommand.Path -Parent
-$repoRoot  = Split-Path $scriptDir -Parent
+$scriptDir  = Split-Path $MyInvocation.MyCommand.Path -Parent
+$promptsDir = Split-Path $scriptDir -Parent     # dev-prompts/
+$repoRoot   = Split-Path $promptsDir -Parent    # repo root
 
 if (-not $OutputDir) {
     $OutputDir = Join-Path $repoRoot 'dist'
@@ -39,11 +40,11 @@ $zipPath = Join-Path $OutputDir 'dev-prompts.zip'
 # Arquivos a empacotar
 # ---------------------------------------------------------------------------
 $filesToPack = @(
-    @{ Src = Join-Path $repoRoot 'docs\prompts\vs-ia-master.md';          Dest = 'prompts\vs-ia-master.md' },
-    @{ Src = Join-Path $repoRoot 'docs\prompts\vs-ia-short.md';           Dest = 'prompts\vs-ia-short.md' },
-    @{ Src = Join-Path $repoRoot '.github\copilot-instructions.md';        Dest = 'configs\copilot-instructions.md' },
-    @{ Src = Join-Path $repoRoot '.ai-context.md';                         Dest = 'configs\ai-context.md' },
-    @{ Src = Join-Path $repoRoot 'README.dev.md';                          Dest = 'README.dev.md' }
+    @{ Src = Join-Path $promptsDir 'prompts\vs-ia-master.md';          Dest = 'prompts\vs-ia-master.md' },
+    @{ Src = Join-Path $promptsDir 'prompts\vs-ia-short.md';           Dest = 'prompts\vs-ia-short.md' },
+    @{ Src = Join-Path $promptsDir 'configs\copilot-instructions.md';  Dest = 'configs\copilot-instructions.md' },
+    @{ Src = Join-Path $promptsDir 'configs\ai-context.md';            Dest = 'configs\ai-context.md' },
+    @{ Src = Join-Path $promptsDir 'README.dev.md';                    Dest = 'README.dev.md' }
 )
 
 # ---------------------------------------------------------------------------

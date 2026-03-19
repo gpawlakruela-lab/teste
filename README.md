@@ -8,17 +8,20 @@ Conjunto de arquivos de prompt, contexto e automação para um ambiente de desen
 
 ```
 .
-├── .ai-context.md                   # Contexto automático de workspace (Continue, Cursor, etc.)
+├── dev-prompts/                         # ← TUDO AQUI: prompts, configs e scripts
+│   ├── prompts/
+│   │   ├── vs-ia-master.md              # Prompt completo (todas as regras e contexto)
+│   │   └── vs-ia-short.md              # Prompt curto (uso rápido)
+│   ├── configs/
+│   │   ├── copilot-instructions.md     # Instruções para GitHub Copilot
+│   │   └── ai-context.md              # Contexto automático de workspace
+│   ├── scripts/
+│   │   ├── setup-dev-prompts.ps1       # Setup local no Windows (cria D:\Dev)
+│   │   └── export-prompts.ps1          # Empacota tudo em .zip para distribuição
+│   └── README.dev.md                   # Guia detalhado de uso por ferramenta
 ├── .github/
-│   └── copilot-instructions.md      # Instruções automáticas do GitHub Copilot
-├── docs/
-│   └── prompts/
-│       ├── vs-ia-master.md          # Prompt completo (todas as regras e contexto)
-│       └── vs-ia-short.md           # Prompt curto (uso rápido)
-├── scripts/
-│   ├── setup-dev-prompts.ps1        # Setup local no Windows (cria D:\Dev e copia prompts)
-│   └── export-prompts.ps1           # Empacota os prompts em .zip para distribuição
-└── README.dev.md                    # Guia detalhado de uso por ferramenta
+│   └── copilot-instructions.md         # Auto-carregado pelo GitHub Copilot
+└── README.md                           # Este arquivo
 ```
 
 ---
@@ -37,7 +40,7 @@ cd teste
 
 ```powershell
 # [Windows PowerShell] — cria D:\Dev e instala os prompts localmente
-.\scripts\setup-dev-prompts.ps1
+.\dev-prompts\scripts\setup-dev-prompts.ps1
 ```
 
 ### 3. Recarregue o perfil e use
@@ -55,12 +58,12 @@ help-dev         # lista todas as funções disponíveis
 | Ferramenta | Arquivo recomendado |
 |---|---|
 | **GitHub Copilot** | `.github/copilot-instructions.md` (automático) |
-| **Copilot Chat** | `docs/prompts/vs-ia-master.md` ou `vs-ia-short.md` |
+| **Copilot Chat** | `dev-prompts/prompts/vs-ia-master.md` ou `vs-ia-short.md` |
 | **Continue** | `vs-ia-master.md` como `systemMessage` no `config.json` |
 | **Cursor** | `vs-ia-master.md` em *Rules for AI* ou `.cursorrules` |
-| **Outros** | `.ai-context.md` na raiz do workspace |
+| **Outros** | `dev-prompts/configs/ai-context.md` na raiz do workspace |
 
-> Veja o guia completo em [`README.dev.md`](./README.dev.md).
+> Veja o guia completo em [`dev-prompts/README.dev.md`](./dev-prompts/README.dev.md).
 
 ---
 
@@ -70,7 +73,7 @@ Para gerar um arquivo `.zip` com todos os prompts e configs prontos para copiar 
 
 ```powershell
 # [Windows PowerShell]
-.\scripts\export-prompts.ps1
+.\dev-prompts\scripts\export-prompts.ps1
 ```
 
 Isso cria `dist\dev-prompts.zip` contendo apenas os arquivos de prompt e config, prontos para copiar para `D:\Dev\prompts` e `D:\Dev\configs` em qualquer máquina.

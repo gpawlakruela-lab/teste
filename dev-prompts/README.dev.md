@@ -8,10 +8,10 @@ Este documento explica **onde e como usar cada arquivo de prompt/contexto** dest
 
 | Arquivo | Finalidade |
 |---|---|
-| `docs/prompts/vs-ia-master.md` | Prompt completo — todas as regras, contexto e stack |
-| `docs/prompts/vs-ia-short.md` | Versão curta — para uso rápido no terminal ou chat |
-| `.github/copilot-instructions.md` | Instruções automáticas para GitHub Copilot |
-| `.ai-context.md` | Contexto geral de workspace para qualquer ferramenta de IA |
+| `dev-prompts/prompts/vs-ia-master.md` | Prompt completo — todas as regras, contexto e stack |
+| `dev-prompts/prompts/vs-ia-short.md` | Versão curta — para uso rápido no terminal ou chat |
+| `dev-prompts/configs/copilot-instructions.md` | Instruções automáticas para GitHub Copilot |
+| `dev-prompts/configs/ai-context.md` | Contexto geral de workspace para qualquer ferramenta de IA |
 
 ---
 
@@ -20,7 +20,7 @@ Este documento explica **onde e como usar cada arquivo de prompt/contexto** dest
 ### GitHub Copilot Chat
 
 1. Abra o painel **Copilot Chat** no VS Code (`Ctrl+Alt+I`)
-2. Cole o conteúdo de `docs/prompts/vs-ia-master.md` como primeira mensagem da conversa
+2. Cole o conteúdo de `dev-prompts/prompts/vs-ia-master.md` como primeira mensagem da conversa
 3. **Ou** use o arquivo `.github/copilot-instructions.md` — o Copilot o carrega automaticamente como contexto do repositório
 
 > **Dica:** Para sessões rápidas, use `vs-ia-short.md` — é suficiente para a maioria das tarefas.
@@ -48,18 +48,17 @@ Este documento explica **onde e como usar cada arquivo de prompt/contexto** dest
 ### Cursor
 
 1. Abra **Cursor Settings → Rules for AI** (ou `.cursorrules` na raiz do projeto)
-2. Cole o conteúdo de `docs/prompts/vs-ia-master.md`
+2. Cole o conteúdo de `dev-prompts/prompts/vs-ia-master.md`
 3. Para projetos específicos, crie `.cursorrules` na raiz do projeto com o conteúdo de `vs-ia-short.md`
 
 ### Codeium / outros
 
-- Cole o conteúdo de `vs-ia-short.md` no campo de **System Prompt** ou **Custom Instructions** da ferramenta
-- Referencie `.ai-context.md` como contexto adicional de workspace quando a ferramenta suportar arquivos de contexto
+- Cole o conteúdo de `dev-prompts/prompts/vs-ia-short.md` no campo de **System Prompt** ou **Custom Instructions** da ferramenta
+- Referencie `dev-prompts/configs/ai-context.md` como contexto adicional de workspace quando a ferramenta suportar arquivos de contexto
 
 ### Workspace docs (contexto automático)
 
-- Ferramentas que leem arquivos de contexto do workspace (como alguns plugins do Continue) detectam `.ai-context.md` automaticamente na raiz do projeto
-- Mantenha `.ai-context.md` na raiz de cada workspace para contexto automático
+- Ferramentas que leem arquivos de contexto do workspace (como alguns plugins do Continue) detectam `dev-prompts/configs/ai-context.md` automaticamente
 
 ---
 
@@ -69,7 +68,7 @@ Para copiar os prompts para `D:\Dev\prompts` e criar os arquivos de configuraç�
 
 ```powershell
 # [Windows PowerShell]
-.\scripts\setup-dev-prompts.ps1
+.\dev-prompts\scripts\setup-dev-prompts.ps1
 ```
 
 O script é idempotente: não sobrescreve arquivos existentes sem confirmação.
@@ -100,5 +99,5 @@ Para carregar no shell atual sem reiniciar:
 
 - Use **`vs-ia-master.md`** quando iniciar uma sessão longa de desenvolvimento ou quando precisar que o assistente entenda todo o contexto do ambiente
 - Use **`vs-ia-short.md`** para tarefas pontuais, perguntas rápidas ou quando o contexto já foi estabelecido
-- Mantenha **`.github/copilot-instructions.md`** atualizado para que o Copilot sempre tenha o contexto correto automaticamente
-- Atualize **`.ai-context.md`** quando mudar ferramentas, paths ou preferências do ambiente
+- Mantenha **`.github/copilot-instructions.md`** e **`dev-prompts/configs/copilot-instructions.md`** atualizados para que o Copilot sempre tenha o contexto correto automaticamente
+- Atualize **`dev-prompts/configs/ai-context.md`** quando mudar ferramentas, paths ou preferências do ambiente
