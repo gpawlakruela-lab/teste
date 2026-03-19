@@ -1,0 +1,18 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# VS Code (keep .vscode/extensions.json, ignore personal settings)
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+.vscode/*.code-workspace
+
+# PowerShell / Windows temp
+*.tmp
+*.log
+dist/
